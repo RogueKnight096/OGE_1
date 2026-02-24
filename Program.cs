@@ -29,7 +29,7 @@ class Program
             if (line != null)
             {
                 string[] parts = line.Split(",");
-                bool lifecycleState = parts[4].ToLower() == "active";
+                bool lifecycleState = parts[4].Trim() == "active";
                 EmployeeAccess emp = new EmployeeAccess
                 {
                     DisplayName = parts[0],
