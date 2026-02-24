@@ -1,14 +1,26 @@
-﻿class Program
+﻿using System.ComponentModel.Design;
+
+class Program
 {
     static void Main(string[] args)
     {
-        List<Employees> employees = read();
+        List<EmployeeAccess> employees = read();
         Console.WriteLine($"Total records read: {employees.Count}");
+
+        var inactiveEmployees =
+        (
+            from employ in employees
+            where employ.CloudLifecycleState.Equals(false)
+            select employ
+        ).ToList<EmployeeAccess>();
+
+        Console.WriteLine("Employees Currently Inactive: " + inactiveEmployees.Count);
+                                 
     }
 
-    public static List<Employees> read()
+    public static List<EmployeeAccess> read()
     {
-        List<Employees> employeeList = new List<Employees>();
+        List<EmployeeAccess> employeeList = new List<EmployeeAccess>();
         using StreamReader sr = new StreamReader("Francis Tuttle Identities_Basic.csv");
         sr.ReadLine();
         while (!sr.EndOfStream)
@@ -18,7 +30,7 @@
             {
                 string[] parts = line.Split(",");
                 bool lifecycleState = parts[4].ToLower() == "active";
-                Employees emp = new Employees
+                EmployeeAccess emp = new EmployeeAccess
                 {
                     DisplayName = parts[0],
                     FirstName = parts[1],
@@ -44,7 +56,7 @@
 }
 
 
-public struct Employees // Struct for all Employees
+public struct EmployeeAccess // Struct for all Employees
     {
         public string DisplayName { get; set; }
         public string FirstName { get; set; }
