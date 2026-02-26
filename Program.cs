@@ -44,7 +44,7 @@ class Program
             {
                 if (record.AccessSourceName != null && record.AccessDisplayName != null)
                 {
-                    Console.WriteLine($"   {record.AccessSourceName} - {record.AccessDisplayName}");
+                    Console.WriteLine($"   {record.AccessSourceName}  {record.AccessDisplayName}");
                 }
             }
         }
