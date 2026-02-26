@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sb1107509\\Desktop\\Samuel\\OGE_1\\OGE_1.csproj",
+      "projectUniqueName": "C:\\Users\\sb1107509\\Documents\\GitHub\\OGE_1\\OGE_1.csproj",
       "projectName": "OGE_1",
-      "projectPath": "C:\\Users\\sb1107509\\Desktop\\Samuel\\OGE_1\\OGE_1.csproj",
+      "projectPath": "C:\\Users\\sb1107509\\Documents\\GitHub\\OGE_1\\OGE_1.csproj",
       "packagesPath": "C:\\Users\\sb1107509\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sb1107509\\Desktop\\Samuel\\OGE_1\\obj\\",
+      "outputPath": "C:\\Users\\sb1107509\\Documents\\GitHub\\OGE_1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

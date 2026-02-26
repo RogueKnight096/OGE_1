@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
@@ -15,7 +16,39 @@ class Program
         ).ToList<EmployeeAccess>();
 
         Console.WriteLine("Employees Currently Inactive: " + inactiveEmployees.Count);
-                                 
+
+        var AlphabetizedInactiveEmployees =
+        (
+            from employ in employees
+            where employ.CloudLifecycleState == false
+            group employ by employ.IdentityId into g
+            let emp = g.First()
+            orderby emp.LastName
+            select emp
+        ).ToList();
+
+        foreach (var val in AlphabetizedInactiveEmployees)
+        {
+            Console.WriteLine(val.DisplayName);
+        }
+
+        var inactiveGrouped = employees
+            .Where(e => !e.CloudLifecycleState)
+            .GroupBy(e => e.DisplayName)
+            .OrderBy(g => g.Key);
+
+        foreach (var group in inactiveGrouped)
+        {
+            Console.WriteLine(group.Key);
+            foreach (var record in group)
+            {
+                if (record.AccessSourceName != null && record.AccessDisplayName != null)
+                {
+                    Console.WriteLine($"   {record.AccessSourceName} - {record.AccessDisplayName}");
+                }
+            }
+        }
+        Console.WriteLine();
     }
 
     public static List<EmployeeAccess> read()
